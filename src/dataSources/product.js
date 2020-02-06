@@ -1,4 +1,4 @@
-import {DataSource} from 'apollo-datasource';
+import {SQLDataSource} from './sql-data-sources';
 
 export default class ProductDataSource extends SQLDataSource{
     async getProducts(){
@@ -8,9 +8,8 @@ export default class ProductDataSource extends SQLDataSource{
             FROM
                 product
             `
-            );
-            return results.rows[0]
         );
+        return results[0]
     }
 
     async getProductById(id){
@@ -22,8 +21,7 @@ export default class ProductDataSource extends SQLDataSource{
             WHERE id = ?
             `,
             [id]
-            );
-            return results.rows[0][0]
         );
+        return result[0][0]
     }
 }

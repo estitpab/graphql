@@ -1,30 +1,15 @@
-import db from '../config/db';
+import products from './query/products';
+import productById from './query/productById';
+import img from './products/img';
+import stock from './products/stock';
 
-
-
-const resolvers = {
-    Query: {
-        products: async () => { 
-            const rows  = await db.raw('SELECT * FROM product');  
-            return rows[0]
-        } ,
-        productById: async (parent, {id}, context, info) =>  {
-            const rows = await db.raw('SELECT * FROM product where id = ?', [id])
-            return rows[0][0]
-        }
+export default{
+    Query:{
+        products,
+        productById,
     },
-
     Products:{
-        stock: async ({id}, args, context, info) => {
-            const rows = await db.raw('SELECT * FROM stock WHERE productId = ?', [id])
-            return rows [0][0]
-        },
-        img: async ({id}, args, context, info) => {
-            const rows = await db.raw('SELECT * FROM image WHERE productId = ?', [id])
-            return rows [0][0]
-        }
+        img,
+        stock,
     }
-};
-
-
-export default resolvers;
+}
