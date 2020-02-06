@@ -1,7 +1,8 @@
-type Products implements ProductInterface {
+type CartProduct implements ProductInterface {
     id: ID!
     name: String!
     price: Int
     stock: Stock
     img: Img
+    quantity: Int
 }

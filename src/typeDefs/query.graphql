@@ -1,4 +1,5 @@
 type Query {
     products: [Products],
     productById(id: ID!) :Products
+    cartById(id: ID!) :Cart
 }
