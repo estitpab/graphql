@@ -1,0 +1,4 @@
+type Img{
+    id: ID
+    path: String!
+}

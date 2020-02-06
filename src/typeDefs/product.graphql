@@ -2,4 +2,6 @@ type Products {
     id: ID!
     name: String!
     price: Int
+    stock: Stock
+    img: Img
 }

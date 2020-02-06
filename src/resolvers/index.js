@@ -1,23 +1,28 @@
-const products = [
-    {
-        id: '1',
-        name: 'Robe',
-        price: 20
-    },
-    {
-        id: '2',
-        name: 'Jeans',
-        price: 39
-    },
+import db from '../config/db';
 
-];
 
 
 const resolvers = {
     Query: {
-        products: () => products,
-        productById: (parent, {id}, context, info) => products.find((product) => {
-            return product.id === id ? product : null})
+        products: async () => { 
+            const rows  = await db.raw('SELECT * FROM product');  
+            return rows[0]
+        } ,
+        productById: async (parent, {id}, context, info) =>  {
+            const rows = await db.raw('SELECT * FROM product where id = ?', [id])
+            return rows[0][0]
+        }
+    },
+
+    Products:{
+        stock: async ({id}, args, context, info) => {
+            const rows = await db.raw('SELECT * FROM stock WHERE productId = ?', [id])
+            return rows [0][0]
+        },
+        img: async ({id}, args, context, info) => {
+            const rows = await db.raw('SELECT * FROM image WHERE productId = ?', [id])
+            return rows [0][0]
+        }
     }
 };
 

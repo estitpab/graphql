@@ -1,12 +1,12 @@
 
 exports.up = function(knex) {
-  return knex.schema.createTable('theme', table => {
+  return knex.schema.createTable('product', table => {
       table.increments();
-      table.string('products');
+      table.string('name');
       table.timestamps();
   });
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('theme');
+  return knex.schema.dropTable('product');
 };

@@ -1,7 +1,7 @@
 import knex from 'knex';
 
 export default knex({
-    client: 'postgresql',
+    client: 'mysql',
     connection:{
         server: 'localhost',
         user: 'root',
