@@ -1,27 +1,24 @@
-const books = [
+const products = [
     {
-        title: 'Harry Potter and the Chamber of Secrets',
-        author: 'J.K. Rowling',
+        id: '1',
+        name: 'Robe',
+        price: 20
     },
     {
-        title: 'Jurassic Park',
-        author: 'Michael Crichton',
-    }
-];
+        id: '2',
+        name: 'Jeans',
+        price: 39
+    },
 
-const authors = [
-    {
-        id: 1,
-        name: 'J.K. Rowling',
-    }
 ];
 
 
 const resolvers = {
     Query: {
-        books: () => books,
-        authors: () => authors
-    },
+        products: () => products,
+        productById: (parent, {id}, context, info) => products.find((product) => {
+            return product.id === id ? product : null})
+    }
 };
 
 

@@ -1,4 +1,4 @@
 type Query {
-    books: [Book],
-    authors: [Author]
+    products: [Products],
+    productById(id: ID!) :Products
 }
